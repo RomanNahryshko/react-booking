@@ -15,6 +15,7 @@ import { format } from "date-fns/format";
 import { Calendar } from "../ui/calendar";
 import type { DateRange } from "react-day-picker";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { startOfDay } from "date-fns";
 
 type BookingFormProps = {
   form: UseFormReturn<BookingFormValues>;
@@ -123,6 +124,7 @@ export function BookingForm({ form, selectedBooking, onSubmit }: BookingFormProp
                 onSelect={setRange}
                 numberOfMonths={isMobile ? 1 : 2}
                 className="rounded-lg"
+                disabled={{ before: startOfDay(new Date()) }} 
               />
 
               <div className="flex justify-end gap-2 mt-3">
